@@ -1,0 +1,644 @@
+/* Fonts */
+
+@font-face {
+    font-family: 'Rubik-Regular';
+    src: url('Fonts/Rubik/Rubik-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Variables */
+
+:root {
+    --Core-Font: 'Rubik-Regular';
+
+    --Base-Colour: #fafafa;
+    --Secondary-Base-Colour: #e4e5f193;
+    --Tetriary-Base-Colour: #e4e5f1;
+    --Button-Hover-Colour: #c3c4cf;
+
+    --Font-Colour: #000000;
+}
+
+/* Styling */
+
+html {
+    background-color: var(--Base-Colour);
+
+    height: 100%;
+}
+
+.Topbar {
+    z-index: 2;
+    position: fixed;
+
+    top: 0%;
+    left: 0%;
+
+    width: 100%;
+    height: 6em;
+
+    background: var(--Secondary-Base-Colour);
+    backdrop-filter: blur(4px);
+
+    box-shadow: 0 0 1.5em 0 rgba(0, 0, 0, 0.479);
+}
+
+.Title {
+    position: relative;
+
+    margin-top: 0.5%;
+    left: 1%;
+
+    font-family: var(--Core-Font);
+    font-size: 400%;
+    
+    color: var(--Font-Colour);
+    user-select: none;
+}
+
+.SearchBar {
+    z-index: 3;
+    position: fixed;
+
+    top: 25%;
+    left: 22%;
+
+    width: 23%;
+    height: 50%;
+
+    border-radius: 5px;
+
+    background: var(--Tetriary-Base-Colour);
+    box-shadow: 0 10px 1em 0 rgba(0, 0, 0, 0.279);
+
+    transition: 0.15s;
+}
+
+.SearchBar:hover {
+    background: var(--Button-Hover-Colour);
+}
+
+.SearchBarInput {
+    z-index: 3;
+    position: relative;
+
+    top: -10%;
+    left: 1%;
+
+    padding: 3%;
+
+    width: 78%;
+    height: 40%;
+
+    font-family: var(--Core-Font);
+    font-size: 200%;
+    color: var(--Font-Colour);
+   
+    border: none;
+    border-radius: 5px;
+
+    background: #ffffff00;
+}
+
+.SearchImage {
+    z-index: 3;
+    position: relative;
+
+    height: 60%;
+
+    margin-top: 3%;
+    margin-left: 3%;
+}
+
+.Words {
+    position: absolute;
+    z-index: 0;
+
+    width: 45%;
+    height: 200%;
+
+    top: 15%;
+    left: 3%;
+
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+
+    border-radius: 5px;
+
+    background: transparent;
+    
+}
+
+.WordInteractPanel {
+    z-index: 3;
+    position: fixed;
+
+    height: 12%;
+    width: 15%;
+
+    left: 15%;
+    top: 30%;
+
+    border-radius: 8px;
+
+    background: var(--Secondary-Base-Colour);
+
+    backdrop-filter: blur(4px);
+    box-shadow: 0 10px 1em 0 rgba(0, 0, 0, 0.279);
+
+    transition: 0.15s;
+}
+
+.WordInteractPanelArrow {
+    z-index: 3;
+    position: fixed;
+
+    top: 12%;
+    left: -10%;
+
+    height: 60%;
+
+    margin-top: 3%;
+    margin-left: 3%;
+
+    rotate: 180deg;
+}
+
+.DefinitionButton {
+    position: fixed;
+
+    top: 56%;
+    left: 25%;
+    width: 70%;
+
+    text-align: left;
+
+    font-family: var(--Core-Font);
+    font-size: 2em;
+    color: var(--Font-Colour);
+
+    cursor: pointer;
+    background-color: transparent;
+
+    border: none;
+    transition: 0.15s;
+}
+
+.DefinitionButton:hover {
+    left: 28%;
+}
+
+.DefineImage {
+    position: fixed;
+
+    top: 56%;
+    left: 7%;
+
+    width: 13%;
+}
+
+.WordCopyButton {
+    position: fixed;
+    
+    top: 10%;
+    left: 25%;
+    width: 70%;
+
+    text-align: left;
+
+    font-family: var(--Core-Font);
+    font-size: 2em;
+    color: var(--Font-Colour);
+
+    cursor: pointer;
+    background-color: transparent;
+
+    border: none;
+    transition: 0.15s;
+}
+
+.WordCopyButton:hover {
+    left: 28%;
+}
+
+
+.WordCopyImage {
+    position: fixed;
+
+    top: 10%;
+    left: 7%;
+
+    width: 13%;
+}
+
+.Word {
+    font-family: var(--Core-Font);
+    font-size: 2em;
+    color: var(--Font-Colour);
+
+    background: transparent;
+    border: none;
+
+    margin-top: 3%;
+    margin-bottom: 3%;
+    text-align: left;
+
+    margin-top: 0%;
+}
+
+.PageBar {
+    transition: 0.15s;
+
+    z-index: 3;
+    position: fixed;
+
+    top: 90%;
+    left: 30%;
+
+    width: 40em;
+    height: 4.5em;
+
+    border-radius: 25px;
+
+    background: var(--Secondary-Base-Colour);
+    box-shadow: 0 10px 1em 0 rgba(0, 0, 0, 0.279);
+}
+
+.PageBar:hover {
+    left: 29.75%;
+    width: 40.5em;
+
+    top: 89.5%;
+    height: 4.6em;
+}
+
+.IncrementPageButton {
+    position: absolute;
+
+    left: 72%;
+    top: 8%;
+
+    width: 11.5%;
+    height: 80%;
+
+    cursor: pointer;
+
+    background-color: transparent;
+    border: none;
+
+    transition: 0.3s;
+}
+
+.IncrementPageButton:hover {
+    rotate: 20deg;
+}
+
+.DecrementPageButton {
+    position: absolute;
+
+    left: 17%;
+    top: 8%;
+
+    width: 11.5%;
+    height: 80%;
+
+    cursor: pointer;
+
+    background-color: transparent;
+    border: none;
+
+    transition: 0.3s;
+}
+
+.DecrementPageButton:hover {
+    rotate: -20deg;
+}
+
+.StartPageButton {
+    position: absolute;
+
+    left: 2%;
+    top: 10%;
+
+    width: 11.5%;
+    height: 80%;
+
+    cursor: pointer;
+
+    background-color: transparent;
+    border: none;
+    
+    transition: 0.3s;
+}
+
+.StartPageButton:hover {
+    rotate: -20deg;
+}
+
+.EndPageButton {
+    position: absolute;
+
+    left: 87%;
+    top: 10%;
+
+    width: 11.5%;
+    height: 80%;
+
+    cursor: pointer;
+
+    background-color: transparent;
+    border: none;
+
+    transition: 0.3s;
+}
+
+.EndPageButton:hover {
+    rotate: 20deg;
+}
+
+.CurrentPageLabel {
+    margin-top: 1%;
+    text-align: center;
+
+    font-family: var(--Core-Font);
+    font-size: 300%;
+    color: var(--Font-Colour);
+
+    user-select: none;
+}
+
+.PageImage {
+    height: 85%;
+}
+
+.OrderButton {
+    z-index: 3;
+
+    position: fixed;
+
+    margin-top: 0%;
+    left: 47%;
+    top: 25%;
+
+    width: 5%;
+    height: 50%;
+
+    cursor: pointer;
+    background-color: var(--Tetriary-Base-Colour);
+
+    border-radius: 20px;
+    box-shadow: 0 10px 1em 0 rgba(0, 0, 0, 0.279);
+
+    border: none;
+}
+
+.OrderButton:hover {
+    transition: 0.15s;
+    background-color:var(--Button-Hover-Colour);
+}
+
+.OrderButton:active {
+    transition: 0.15s;
+
+    top: 30%;
+    box-shadow: 0 10px 1em 0 rgba(0, 0, 0, 0);
+    background-color:var(--Button-Hover-Colour);
+}
+
+.Order_MainIcon {
+    z-index: 3;
+    position: relative;
+
+    left: -6%;
+    height: 60%;
+
+    margin-top: 3%;
+    margin-left: 3%;
+}
+
+.Order_Arrow {
+    z-index: 3;
+    position: relative;
+
+    left: 0%;
+    height: 60%;
+
+    margin-top: 3%;
+    margin-left: 3%;
+}
+
+.LengthBar {
+    z-index: 3;
+    position: fixed;
+
+    top: 25%;
+    left: 54%;
+
+    width: 14%;
+    height: 50%;
+
+    border-radius: 5px;
+
+    background: var(--Tetriary-Base-Colour);
+    box-shadow: 0 10px 1em 0 rgba(0, 0, 0, 0.279);
+
+    transition: 0.15s;
+}
+
+.LengthBar:hover {
+    background: var(--Button-Hover-Colour);
+}
+
+.LengthImage {
+    z-index: 3;
+    position: relative;
+
+    height: 60%;
+
+    margin-top: 3%;
+    margin-left: 6%;
+}
+
+.LengthMinInput {
+    z-index: 3;
+    position: relative;
+
+    top: -2%;
+    left: -10%;
+
+    padding: 3%;
+
+    width: 24.5%;
+    height: 40%;
+
+    font-family: var(--Core-Font);
+    font-size: 200%;
+    color: var(--Font-Colour);
+   
+    border: none;
+    border-radius: 5px;
+
+    background: #ffffff00;
+
+    text-align: center;
+}
+
+.LengthMaxInput {
+    z-index: 3;
+    position: relative;
+
+    top: -2%;
+    left: 2%;
+
+    padding: 3%;
+
+    width: 25.5%;
+    height: 40%;
+
+    font-family: var(--Core-Font);
+    font-size: 200%;
+    color: var(--Font-Colour);
+   
+    border: none;
+    border-radius: 5px;
+
+    background: #ffffff00;
+
+    text-align: center;
+}
+
+.LengthArrow {
+    z-index: 3;
+    position: relative;
+
+    left: 33%;
+    height: 70%;
+
+    top: 10%;
+
+    margin-top: 1%;
+    margin-left: 3%;
+}
+
+.PatternBar {
+    z-index: 3;
+    position: fixed;
+
+    top: 25%;
+    left: 70%;
+
+    width: 29%;
+    height: 50%;
+
+    border-radius: 5px;
+
+    background: var(--Tetriary-Base-Colour);
+    box-shadow: 0 10px 1em 0 rgba(0, 0, 0, 0.279);
+
+    transition: 0.15s;
+}
+
+.PatternBar:hover {
+    background: var(--Button-Hover-Colour);
+}
+
+.PatternImage {
+    z-index: 3;
+    position: relative;
+
+    height: 60%;
+
+    margin-top: 2%;
+    margin-left: 4%;
+}
+
+.BeginsWithInput {
+    z-index: 3;
+    position: relative;
+
+    top: -8%;
+    left: 0%;
+
+    padding: 3%;
+
+    width: 37%;
+    height: 40%;
+
+    font-family: var(--Core-Font);
+    font-size: 200%;
+    color: var(--Font-Colour);
+   
+    border: none;
+    border-radius: 5px;
+
+    background: #ffffff00;
+}
+
+.EndsWithInput {
+    z-index: 3;
+    position: relative;
+
+    top: -8%;
+    left: 0%;
+
+    padding: 3%;
+
+    width: 37%;
+    height: 40%;
+
+    text-align:right;
+
+    font-family: var(--Core-Font);
+    font-size: 200%;
+    color: var(--Font-Colour);
+   
+    border: none;
+    border-radius: 5px;
+
+    background: #ffffff00;
+}
+
+.ToggleVisualMode {
+    z-index: 3;
+
+    position: fixed;
+
+    margin-top: 0%;
+    left: 95%;
+    top: 91%;
+
+    width: 4%;
+    height: 7%;
+
+    cursor: pointer;
+    background-color: var(--Tetriary-Base-Colour);
+
+    border-radius: 15px;
+    box-shadow: 0 10px 1em 0 rgba(0, 0, 0, 0.279);
+
+    border: none;
+    transition: 0.15s;
+}
+
+.ToggleVisualMode:hover {
+    background: var(--Button-Hover-Colour);
+}
+
+.ToggleVisualMode_Icon {
+    z-index: 3;
+    position: relative;
+
+    left: 0%;
+    height: 60%;
+
+    margin-top: 3%;
+    margin-left: 3%;
+}
+
+.ToggleVisualMode:active {
+    top: 92%;
+    box-shadow: 0 10px 1em 0 rgba(0, 0, 0, 0);
+    background-color:var(--Button-Hover-Colour);
+}

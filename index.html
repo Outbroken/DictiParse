@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DictiParse</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+    <!-- Create the Website -->
+    <div class="Topbar">
+        <h1 class="Title">DictiParse</h1>
+
+        <div class="SearchBar">
+            <img src="images/searchimageAnimated.svg" class="SearchImage" id="SearchImage">
+            <input type="text" class="SearchBarInput" placeholder="Search..." id="SearchInput" maxlength="60">
+        </div>
+
+        <button class="OrderButton" id="OrderButton">
+            <img src="images/arrow-down-a-z-solid.svg" class="Order_MainIcon" id="Order_MainIcon">
+            <img src="images/caret-right-solid.svg" class="Order_Arrow" id="Order_Arrow">
+        </button>
+
+        <div class="LengthBar">
+            <img src="images/ruler-solid.svg" class="LengthImage" id="LengthImg">
+            <img src="images/caret-right-solid.svg" class="LengthArrow" id="LengthSubImg">
+            <input type="text" class="LengthMinInput" placeholder="Min" id="LengthMinInput" maxlength="2">
+            <input type="text" class="LengthMaxInput" placeholder="Max" id="LengthMaxInput" maxlength="2">
+        </div>
+
+        <div class="PatternBar">
+            <img src="images/flag-checkered-solid.svg" class="PatternImage" id="PatternImg">
+            <input type="text" class="BeginsWithInput" placeholder="Begins With" id="BeginsWithInput" maxlength="8">
+            
+            <input type="text" class="EndsWithInput" placeholder="Ends With" id="EndsWithInput" maxlength="8">
+        </div>
+    </div>
+
+    <div class="PageBar">
+        <button class="StartPageButton" id="pageStart">
+            <img src="images/double-left-solid.svg" class="PageImage" id="pageStartImg">
+        </button>
+
+        <button class="DecrementPageButton" id="pageDec">
+            <img src="images/arrow-left-solid.svg" class="PageImage" id="pageDecImg">
+        </button>
+
+        <p class="CurrentPageLabel" id="PageText">199</p>
+
+        <button class="IncrementPageButton" id="pageInc">
+            <img src="images/arrow-right-solid.svg" class="PageImage" id="pageIncImg">
+        </button>
+
+        <button class="EndPageButton" id="pageEnd">
+            <img src="images/double-right-solid.svg" class="PageImage" id="pageEndImg">
+        </button>
+    </div>
+
+    <button class="ToggleVisualMode" id="ToggleVisualMode">
+        <img src="images/lightbulb-solid.svg" alt="" class="ToggleVisualMode_Icon" id="ToggleVisualModeIcon">
+    </button>
+
+    <div class="WordInteractPanel" id="WordInteractPanel">
+        <img src="images/clone-solid.svg" alt="" class="WordCopyImage" id="WordCopyImg">
+        <img src="images/book-solid.svg" alt="" class="DefineImage" id="DefineImg">
+
+        <img src="images/caret-right-solid.svg" class="WordInteractPanelArrow" id="WordInteractPanelArr">
+
+        <button class="WordCopyButton" id="WordCopyButton">Copy</button>
+        <button class="DefinitionButton" id="WordDefineButton">Define</button>
+    </div>
+
+    <div class="Words" id="WordsDiv">
+    </div>
+
+    <!-- Load Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+</body>
+</html>
