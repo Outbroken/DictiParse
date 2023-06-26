@@ -12,12 +12,68 @@
 :root {
     --Core-Font: 'Rubik-Regular';
 
-    --Base-Colour: #fafafa;
+    --Base-Colour: #050216;
     --Secondary-Base-Colour: #e4e5f193;
     --Tetriary-Base-Colour: #e4e5f1;
     --Button-Hover-Colour: #c3c4cf;
 
-    --Font-Colour: #000000;
+    --Font-Colour: #ffffff;
+}
+
+/* Media Queries */
+
+/* For PC:  */
+
+@media (min-width: 1000px) {
+    #Words {
+        padding-top: 1em;
+    }
+
+    #SearchBar {
+        width: 75%;
+    }
+
+    #PageBar {
+        bottom: 1em;
+        left: 30%;
+
+        width: 40em;
+        height: 4.5em;
+
+        border-radius: 25px;
+    }
+
+    #Title {
+        visibility: visible;
+    }
+    /* Styles */
+}
+
+@media (max-width: 1000px) {
+    #Words {
+        padding-top: 2em;
+    }
+
+    #SearchBar {
+        width: 75%;
+    }
+
+    #PageBar {
+        --HeightValue: 3.5em;
+
+        top: calc(100% - var(--HeightValue));
+        left: 0%;
+
+        width: 100%;
+        height: var(--HeightValue);
+
+        border-radius: 0px;
+    }
+
+    #Title {
+        visibility: collapse;
+    }
+    /* Styles */
 }
 
 /* Styling */
@@ -28,8 +84,20 @@ html {
     height: 100%;
 }
 
-.Topbar {
-    z-index: 2;
+#Title {
+    margin-top: 0.5%;
+    margin-left: 1%;
+    margin-right: 3%;
+
+    font-family: var(--Core-Font);
+    font-size: 300%;
+    color: var(--Font-Colour);
+}
+
+#Topbar {
+    display: flex;
+
+    z-index: 1;
     position: fixed;
 
     top: 0%;
@@ -38,70 +106,182 @@ html {
     width: 100%;
     height: 6em;
 
-    background: var(--Secondary-Base-Colour);
-    backdrop-filter: blur(4px);
-
-    box-shadow: 0 0 1.5em 0 rgba(0, 0, 0, 0.479);
+    backdrop-filter: blur(6px);
 }
 
-.Title {
-    position: relative;
-
-    margin-top: 0.5%;
-    left: 1%;
-
-    font-family: var(--Core-Font);
-    font-size: 400%;
-    
-    color: var(--Font-Colour);
-    user-select: none;
-}
-
-.SearchBar {
-    z-index: 3;
+#PageBar {
+    z-index: 2;
     position: fixed;
 
-    top: 25%;
-    left: 22%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 
-    width: 23%;
-    height: 50%;
-
-    border-radius: 5px;
-
-    background: var(--Tetriary-Base-Colour);
+    background: #ffffff30;
     box-shadow: 0 10px 1em 0 rgba(0, 0, 0, 0.279);
+
+    backdrop-filter: blur(6px);
 
     transition: 0.15s;
 }
 
-.SearchBar:hover {
-    background: var(--Button-Hover-Colour);
+#Sidebar {
+    z-index: 2;
+    position: fixed;
+
+    transform: translateY(50%);
+    right: 1em;
+
+    width: 5em;
+    height: auto;
+    
+    border-radius: 1000px;
+
+    padding-top: 1em;
+    padding-bottom: 1em;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    gap: 1em;
+
+    background: #ffffff30;
+    box-shadow: 0 10px 1em 0 rgba(0, 0, 0, 0.279);
+
+    backdrop-filter: blur(6px);
+
+    transition: 0.15s;
 }
 
-.SearchBarInput {
-    z-index: 3;
+#CurrentPageLabel {
+    top: 8%;
+    text-align: center;
+
+    font-family: var(--Core-Font);
+    font-size: 300%;
+    color: var(--Font-Colour);
+
+    user-select: none;
+}
+
+.PageButton {
     position: relative;
 
-    top: -10%;
-    left: 1%;
+    width: 10%;
+    height: 60%;
 
-    padding: 3%;
+    cursor: pointer;
 
-    width: 78%;
-    height: 40%;
+    background-color: transparent;
+    border: none;
+
+    transition: 0.3s;
+}
+
+.PageButton img {
+    height: 100%;
+
+    filter: invert();
+}
+
+.PageButton:hover {
+    rotate: -20deg;
+}
+
+#SearchBar {
+    z-index: 2;
+    position: relative;
+
+    top: 0.5em;
+    left: 1em;
+
+    height: 50%;
+
+    border-radius: 1000px;
+    border: none;
+
+    padding-left: 0.5em;
+
+    background: #ffffff30;
+    box-shadow: 0 10px 1em 0 rgba(0, 0, 0, 0.279);
+
+    transition: 0.15s;
 
     font-family: var(--Core-Font);
     font-size: 200%;
     color: var(--Font-Colour);
-   
-    border: none;
-    border-radius: 5px;
 
-    background: #ffffff00;
 }
 
-.SearchImage {
+#SearchBarIcon {
+    z-index: 2;
+    position: relative;
+
+    height: 45%;
+
+    margin-top: 1em;
+    left: 1em;
+
+    filter: invert();
+}
+
+#SearchBar:hover {
+    background-color: #ffffff50;
+}
+
+#Words {
+    position: absolute;
+    z-index: 0;
+
+    width: 95%;
+
+    top: 10%;
+    left: 1em;
+
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+}
+
+.Word {
+    font-family: var(--Core-Font);
+    font-size: 2em;
+    color: var(--Font-Colour);
+
+    background: transparent;
+    border: none;
+
+    margin-top: 1em;
+    margin-bottom: 1em;
+
+    text-align: left;
+
+    margin-top: 0%;
+}
+
+#OrderButton {
+    z-index: 2;
+
+    position: relative;
+
+    margin-top: 0%;
+
+    top: 0%;
+
+    width: 5em;
+    height: 5em;
+
+    cursor: pointer;
+    background-color: #ffffff30;
+
+    border-radius: 1000px;
+    box-shadow: 0 10px 1em 0 rgba(0, 0, 0, 0.279);
+
+    border: none;
+}
+
+#OrderButton img {
     z-index: 3;
     position: relative;
 
@@ -109,26 +289,103 @@ html {
 
     margin-top: 3%;
     margin-left: 3%;
+
+    filter: invert();
 }
 
-.Words {
-    position: absolute;
-    z-index: 0;
+#OrderButton:hover {
+    transition: 0.15s;
+    background-color: #ffffff50;
+}
 
-    width: 45%;
-    height: 200%;
-
-    top: 15%;
-    left: 3%;
+#LengthRangeBar {
+    z-index: 3;
 
     display: flex;
     flex-direction: column;
-    align-content: space-between;
+    align-items: center;
 
+    position: relative;
+
+    width: 4em;
+    height: 12em;
+
+    cursor: pointer;
+    background-color: #ffffff30;
+
+    border-radius: 1000px;
+    box-shadow: 0 10px 1em 0 rgba(0, 0, 0, 0.279);
+
+    border: none;
+}
+
+#LengthRangeBar img {
+    z-index: 3;
+    position: relative;
+
+    width: 55%;
+    height: 55%;
+
+    filter: invert();
+}
+
+.LengthInput {
+    z-index: 3;
+    position: relative;
+
+    padding: 3%;
+
+    width: 100%;
+    height: 40%;
+
+    font-family: var(--Core-Font);
+    font-size: 1.5em;
+    color: var(--Font-Colour);
+   
+    border: none;
     border-radius: 5px;
 
-    background: transparent;
-    
+    background: #ffffff00;
+
+    text-align: center;
+}
+
+#MoreButton {
+    z-index: 2;
+
+    position: relative;
+
+    margin-top: 0%;
+
+    top: 0%;
+
+    width: 5em;
+    height: 5em;
+
+    cursor: pointer;
+    background-color: #ffffff30;
+
+    border-radius: 1000px;
+    box-shadow: 0 10px 1em 0 rgba(0, 0, 0, 0.279);
+
+    border: none;
+}
+
+#MoreButton img {
+    z-index: 3;
+    position: relative;
+
+    height: 60%;
+
+    margin-top: 3%;
+    margin-left: 3%;
+
+    filter: invert();
+}
+
+#MoreButton:hover {
+    transition: 0.15s;
+    background-color: #ffffff50;
 }
 
 .WordInteractPanel {
@@ -231,295 +488,6 @@ html {
     left: 7%;
 
     width: 13%;
-}
-
-.Word {
-    font-family: var(--Core-Font);
-    font-size: 2em;
-    color: var(--Font-Colour);
-
-    background: transparent;
-    border: none;
-
-    margin-top: 3%;
-    margin-bottom: 3%;
-    text-align: left;
-
-    margin-top: 0%;
-}
-
-.PageBar {
-    transition: 0.15s;
-
-    z-index: 3;
-    position: fixed;
-
-    top: 90%;
-    left: 30%;
-
-    width: 40em;
-    height: 4.5em;
-
-    border-radius: 25px;
-
-    background: var(--Secondary-Base-Colour);
-    box-shadow: 0 10px 1em 0 rgba(0, 0, 0, 0.279);
-}
-
-.PageBar:hover {
-    left: 29.75%;
-    width: 40.5em;
-
-    top: 89.5%;
-    height: 4.6em;
-}
-
-.IncrementPageButton {
-    position: absolute;
-
-    left: 72%;
-    top: 8%;
-
-    width: 11.5%;
-    height: 80%;
-
-    cursor: pointer;
-
-    background-color: transparent;
-    border: none;
-
-    transition: 0.3s;
-}
-
-.IncrementPageButton:hover {
-    rotate: 20deg;
-}
-
-.DecrementPageButton {
-    position: absolute;
-
-    left: 17%;
-    top: 8%;
-
-    width: 11.5%;
-    height: 80%;
-
-    cursor: pointer;
-
-    background-color: transparent;
-    border: none;
-
-    transition: 0.3s;
-}
-
-.DecrementPageButton:hover {
-    rotate: -20deg;
-}
-
-.StartPageButton {
-    position: absolute;
-
-    left: 2%;
-    top: 10%;
-
-    width: 11.5%;
-    height: 80%;
-
-    cursor: pointer;
-
-    background-color: transparent;
-    border: none;
-    
-    transition: 0.3s;
-}
-
-.StartPageButton:hover {
-    rotate: -20deg;
-}
-
-.EndPageButton {
-    position: absolute;
-
-    left: 87%;
-    top: 10%;
-
-    width: 11.5%;
-    height: 80%;
-
-    cursor: pointer;
-
-    background-color: transparent;
-    border: none;
-
-    transition: 0.3s;
-}
-
-.EndPageButton:hover {
-    rotate: 20deg;
-}
-
-.CurrentPageLabel {
-    margin-top: 1%;
-    text-align: center;
-
-    font-family: var(--Core-Font);
-    font-size: 300%;
-    color: var(--Font-Colour);
-
-    user-select: none;
-}
-
-.PageImage {
-    height: 85%;
-}
-
-.OrderButton {
-    z-index: 3;
-
-    position: fixed;
-
-    margin-top: 0%;
-    left: 47%;
-    top: 25%;
-
-    width: 5%;
-    height: 50%;
-
-    cursor: pointer;
-    background-color: var(--Tetriary-Base-Colour);
-
-    border-radius: 20px;
-    box-shadow: 0 10px 1em 0 rgba(0, 0, 0, 0.279);
-
-    border: none;
-}
-
-.OrderButton:hover {
-    transition: 0.15s;
-    background-color:var(--Button-Hover-Colour);
-}
-
-.OrderButton:active {
-    transition: 0.15s;
-
-    top: 30%;
-    box-shadow: 0 10px 1em 0 rgba(0, 0, 0, 0);
-    background-color:var(--Button-Hover-Colour);
-}
-
-.Order_MainIcon {
-    z-index: 3;
-    position: relative;
-
-    left: -6%;
-    height: 60%;
-
-    margin-top: 3%;
-    margin-left: 3%;
-}
-
-.Order_Arrow {
-    z-index: 3;
-    position: relative;
-
-    left: 0%;
-    height: 60%;
-
-    margin-top: 3%;
-    margin-left: 3%;
-}
-
-.LengthBar {
-    z-index: 3;
-    position: fixed;
-
-    top: 25%;
-    left: 54%;
-
-    width: 14%;
-    height: 50%;
-
-    border-radius: 5px;
-
-    background: var(--Tetriary-Base-Colour);
-    box-shadow: 0 10px 1em 0 rgba(0, 0, 0, 0.279);
-
-    transition: 0.15s;
-}
-
-.LengthBar:hover {
-    background: var(--Button-Hover-Colour);
-}
-
-.LengthImage {
-    z-index: 3;
-    position: relative;
-
-    height: 60%;
-
-    margin-top: 3%;
-    margin-left: 6%;
-}
-
-.LengthMinInput {
-    z-index: 3;
-    position: relative;
-
-    top: -2%;
-    left: -10%;
-
-    padding: 3%;
-
-    width: 24.5%;
-    height: 40%;
-
-    font-family: var(--Core-Font);
-    font-size: 200%;
-    color: var(--Font-Colour);
-   
-    border: none;
-    border-radius: 5px;
-
-    background: #ffffff00;
-
-    text-align: center;
-}
-
-.LengthMaxInput {
-    z-index: 3;
-    position: relative;
-
-    top: -2%;
-    left: 2%;
-
-    padding: 3%;
-
-    width: 25.5%;
-    height: 40%;
-
-    font-family: var(--Core-Font);
-    font-size: 200%;
-    color: var(--Font-Colour);
-   
-    border: none;
-    border-radius: 5px;
-
-    background: #ffffff00;
-
-    text-align: center;
-}
-
-.LengthArrow {
-    z-index: 3;
-    position: relative;
-
-    left: 33%;
-    height: 70%;
-
-    top: 10%;
-
-    margin-top: 1%;
-    margin-left: 3%;
 }
 
 .PatternBar {

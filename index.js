@@ -29,7 +29,7 @@ var maxLength = 9999;
 var mustBeginWith = "";
 var mustEndWith = "";
 
-var isDarkMode = false;
+var patternFrameOpen = false;
 var currentWordSelected = "";
 
 function refreshFilteredDictionary() {
@@ -80,35 +80,35 @@ function refreshFilteredDictionary() {
 }
 
 function clearPage() {
-    document.getElementById("WordInteractPanel").style.top = "-100%";
+    //document.getElementById("WordInteractPanel").style.top = "-100%";
     currentWordSelected = "";
 
-    while (document.getElementById("WordsDiv").firstChild) 
+    while (document.getElementById("Words").firstChild) 
     {
-        document.getElementById("WordsDiv").lastChild.removeEventListener("click", null);
-        document.getElementById("WordsDiv").removeChild(document.getElementById("WordsDiv").lastChild);
+        document.getElementById("Words").lastChild.removeEventListener("click", null);
+        document.getElementById("Words").removeChild(document.getElementById("Words").lastChild);
     }
 }
 
 function handlePageIcons(number) {
     if (number == 0) 
     {
-        document.getElementById("pageStartImg").style.opacity = "30%";
-        document.getElementById("pageDecImg").style.opacity = "30%";
+        document.getElementById("pageStart").style.opacity = "30%";
+        document.getElementById("pageDec").style.opacity = "30%";
     } else 
     {
-        document.getElementById("pageStartImg").style.opacity = "100%";
-        document.getElementById("pageDecImg").style.opacity = "100%";
+        document.getElementById("pageStart").style.opacity = "100%";
+        document.getElementById("pageDec").style.opacity = "100%";
     }
     
     if(number == numberOfPages - 1) 
     {
-        document.getElementById("pageEndImg").style.opacity = "30%";
-        document.getElementById("pageIncImg").style.opacity = "30%";
+        document.getElementById("pageEnd").style.opacity = "30%";
+        document.getElementById("pageInc").style.opacity = "30%";
     } else 
     {
-        document.getElementById("pageEndImg").style.opacity = "100%";
-        document.getElementById("pageIncImg").style.opacity = "100%";
+        document.getElementById("pageEnd").style.opacity = "100%";
+        document.getElementById("pageInc").style.opacity = "100%";
     }
 }
 
@@ -132,16 +132,18 @@ function loadPage(number)
         newElement.textContent = firstLetter + restOfWord;
         newElement.classList.add('Word');
 
-        document.getElementById("WordsDiv").appendChild(newElement);
+        document.getElementById("Words").appendChild(newElement);
 
+        /*
         newElement.addEventListener("mouseover", function(ev) {
             document.getElementById("WordInteractPanel").style.top = ev.target.getBoundingClientRect().top - (document.documentElement.clientHeight * 0.035) + "px";
 
             currentWordSelected = ev.target.textContent.toLowerCase();
         })
+        */
     }
 
-    document.getElementById("PageText").textContent = (number + 1) + "/" + numberOfPages;
+    document.getElementById("CurrentPageLabel").textContent = (number + 1) + "/" + numberOfPages;
 }
 
 // RUNTIME
@@ -188,14 +190,14 @@ document.getElementById("pageDec").addEventListener("click", function() {
     loadPage(currentPage);
 })
 
-document.getElementById("SearchInput").addEventListener("input", function(ev) {
+document.getElementById("SearchBar").addEventListener("input", function(ev) {
     if (ev.data == " ") {
-        document.getElementById("SearchInput").value = document.getElementById("SearchInput").value.replace(" ", "")
+        document.getElementById("SearchBar").value = document.getElementById("SearchBar").value.replace(" ", "")
         return;
     }
 
     document.documentElement.scrollTop = 0;
-    newSearchQuery = document.getElementById("SearchInput").value;
+    newSearchQuery = document.getElementById("SearchBar").value;
 
     if (newSearchQuery === "") 
     {
@@ -220,18 +222,18 @@ document.getElementById("OrderButton").addEventListener("click", function() {
 
     if (OrderingModes[currentOrderingIndex] == "A_TO_Z") 
     {
-        document.getElementById("Order_MainIcon").src = "images/arrow-down-a-z-solid.svg";
+        document.getElementById("OrderIcon").src = "images/arrow-down-a-z-solid.svg";
     } else if (OrderingModes[currentOrderingIndex] == "Z_TO_A") 
     {
-        document.getElementById("Order_MainIcon").src = "images/arrow-down-z-a-solid.svg";
+        document.getElementById("OrderIcon").src = "images/arrow-down-z-a-solid.svg";
     }
 
     refreshFilteredDictionary();
     loadPage(currentPage);
 })
 
-document.getElementById("LengthMinInput").addEventListener("input", function(ev) {
-    var input = document.getElementById("LengthMinInput");
+document.getElementById("MinLengthInput").addEventListener("input", function(ev) {
+    var input = document.getElementById("MinLengthInput");
     var numeralizedInput = Number(input.value);
 
     if (input.value === "") {
@@ -251,8 +253,8 @@ document.getElementById("LengthMinInput").addEventListener("input", function(ev)
     loadPage(currentPage);
 })
 
-document.getElementById("LengthMaxInput").addEventListener("input", function(ev) {
-    var input = document.getElementById("LengthMaxInput");
+document.getElementById("MaxLengthInput").addEventListener("input", function(ev) {
+    var input = document.getElementById("MaxLengthInput");
     var numeralizedInput = Number(input.value);
 
     if (input.value === "") {
@@ -272,7 +274,7 @@ document.getElementById("LengthMaxInput").addEventListener("input", function(ev)
     loadPage(currentPage);
 })
 
-document.getElementById("BeginsWithInput").addEventListener("input", function(ev) {
+document.getElementById("BeginsWith").addEventListener("input", function(ev) {
     var input = document.getElementById("BeginsWithInput");
 
     if (ev.data == " ") {
@@ -292,7 +294,7 @@ document.getElementById("BeginsWithInput").addEventListener("input", function(ev
     loadPage(currentPage);
 })
 
-document.getElementById("EndsWithInput").addEventListener("input", function(ev) {
+document.getElementById("EndsWith").addEventListener("input", function(ev) {
     var input = document.getElementById("EndsWithInput");
 
     if (ev.data == " ") {
@@ -312,63 +314,10 @@ document.getElementById("EndsWithInput").addEventListener("input", function(ev) 
     loadPage(currentPage);
 })
 
-document.getElementById("ToggleVisualMode").addEventListener("click", function() {
-    isDarkMode = !isDarkMode;
-
-    if (isDarkMode == false) 
-    {
-        document.getElementById("ToggleVisualModeIcon").src = "images/lightbulb-solid.svg";
-
-        document.documentElement.style.setProperty("--Base-Colour", "#fafafa");
-        document.documentElement.style.setProperty("--Secondary-Base-Colour", "#e4e5f193");
-        document.documentElement.style.setProperty("--Tetriary-Base-Colour", "#e4e5f1");
-
-        document.documentElement.style.setProperty("--Button-Hover-Colour", "#c3c4cf"); 
-        document.documentElement.style.setProperty("--Font-Colour", "#000000");
-
-        document.getElementById("SearchImage").style.filter = "";
-        document.getElementById("Order_MainIcon").style.filter = "";
-        document.getElementById("Order_Arrow").style.filter = "";
-        document.getElementById("LengthImg").style.filter = "";
-        document.getElementById("LengthSubImg").style.filter = "";
-        document.getElementById("PatternImg").style.filter = "";
-        document.getElementById("pageStartImg").style.filter = "";
-        document.getElementById("pageDecImg").style.filter = "";
-        document.getElementById("pageEndImg").style.filter = "";
-        document.getElementById("pageIncImg").style.filter = "";
-        document.getElementById("ToggleVisualModeIcon").style.filter = "";
-        document.getElementById("WordCopyImg").style.filter = "";
-        document.getElementById("DefineImg").style.filter = "";
-        document.getElementById("WordInteractPanelArr").style.filter = "";
-        
-    } else 
-    {
-        document.getElementById("ToggleVisualModeIcon").src = "images/moon-solid.svg";
-
-        document.documentElement.style.setProperty("--Base-Colour", "#101010");
-        document.documentElement.style.setProperty("--Secondary-Base-Colour", "#2a292993");
-        document.documentElement.style.setProperty("--Tetriary-Base-Colour", "#2a2929");
-
-        document.documentElement.style.setProperty("--Button-Hover-Colour", "#4c4b4b"); 
-        document.documentElement.style.setProperty("--Font-Colour", "#fafafa");
-
-        document.getElementById("SearchImage").style.filter = "invert()";
-        document.getElementById("Order_MainIcon").style.filter = "invert()";
-        document.getElementById("Order_Arrow").style.filter = "invert()";
-        document.getElementById("LengthImg").style.filter = "invert()";
-        document.getElementById("LengthSubImg").style.filter = "invert()";
-        document.getElementById("PatternImg").style.filter = "invert()";
-        document.getElementById("pageStartImg").style.filter = "invert()";
-        document.getElementById("pageDecImg").style.filter = "invert()";
-        document.getElementById("pageEndImg").style.filter = "invert()";
-        document.getElementById("pageIncImg").style.filter = "invert()";
-        document.getElementById("ToggleVisualModeIcon").style.filter = "invert()";
-        document.getElementById("WordCopyImg").style.filter = "invert()";
-        document.getElementById("DefineImg").style.filter = "invert()";
-        document.getElementById("WordInteractPanelArr").style.filter = "invert()";
-    }
-
+document.getElementById("LanguageButton").addEventListener("click", function() {
+    
 })
+/*
 
 document.getElementById("WordCopyButton").addEventListener("click", function() {
     if (currentWordSelected == "") {
@@ -387,3 +336,4 @@ document.getElementById("WordDefineButton").addEventListener("click", function()
     window.open("https://www.dictionary.com/browse/" + currentWordSelected);
     document.getElementById("WordInteractPanel").style.top = "-100%";
 })
+*/

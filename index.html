@@ -11,26 +11,53 @@
 </head>
 <body>
     <!-- Create the Website -->
-    <div class="Topbar">
-        <h1 class="Title">DictiParse</h1>
 
-        <div class="SearchBar">
-            <img src="images/searchimageAnimated.svg" class="SearchImage" id="SearchImage">
-            <input type="text" class="SearchBarInput" placeholder="Search..." id="SearchInput" maxlength="60">
-        </div>
+    <div id="Topbar">
+        <h1 id="Title">DictiParse</h1>
+        <img src="images/magnifying-glass-solid.svg" id="SearchBarIcon">
+        <input type="text" id="SearchBar" placeholder="Search..."  maxlength="60">
+    </div>
 
-        <button class="OrderButton" id="OrderButton">
-            <img src="images/arrow-down-a-z-solid.svg" class="Order_MainIcon" id="Order_MainIcon">
-            <img src="images/caret-right-solid.svg" class="Order_Arrow" id="Order_Arrow">
+    <div id="PageBar">
+        <button class="PageButton" id="pageStart">
+            <img src="images/double-left-solid.svg">
         </button>
 
-        <div class="LengthBar">
-            <img src="images/ruler-solid.svg" class="LengthImage" id="LengthImg">
-            <img src="images/caret-right-solid.svg" class="LengthArrow" id="LengthSubImg">
-            <input type="text" class="LengthMinInput" placeholder="Min" id="LengthMinInput" maxlength="2">
-            <input type="text" class="LengthMaxInput" placeholder="Max" id="LengthMaxInput" maxlength="2">
+        <button class="PageButton" id="pageDec">
+            <img src="images/arrow-left-solid.svg">
+        </button>
+
+        <p id="CurrentPageLabel">199</p>
+
+        <button class="PageButton" id="pageInc">
+            <img src="images/arrow-right-solid.svg">
+        </button>
+
+        <button class="PageButton" id="pageEnd">
+            <img src="images/double-right-solid.svg">
+        </button>
+    </div>
+
+    <div id="Sidebar">
+        <button id="OrderButton">
+            <img src="images/arrow-down-a-z-solid.svg" id="OrderIcon">
+        </button>
+    
+        <div id="LengthRangeBar">
+            <input type="text" class="LengthInput" id="MinLengthInput" placeholder="Min"  maxlength="2">
+            <img src="images/ruler-solid.svg" id="LengthIcon">
+            <input type="text" class="LengthInput" id="MaxLengthInput" placeholder="Max"  maxlength="2">
         </div>
 
+        <button id="MoreButton">
+            <img src="images/language-solid.svg">
+        </button>
+    </div>
+
+    <div id="Words">
+    </div>
+
+<!-- 
         <div class="PatternBar">
             <img src="images/flag-checkered-solid.svg" class="PatternImage" id="PatternImg">
             <input type="text" class="BeginsWithInput" placeholder="Begins With" id="BeginsWithInput" maxlength="8">
@@ -39,25 +66,7 @@
         </div>
     </div>
 
-    <div class="PageBar">
-        <button class="StartPageButton" id="pageStart">
-            <img src="images/double-left-solid.svg" class="PageImage" id="pageStartImg">
-        </button>
-
-        <button class="DecrementPageButton" id="pageDec">
-            <img src="images/arrow-left-solid.svg" class="PageImage" id="pageDecImg">
-        </button>
-
-        <p class="CurrentPageLabel" id="PageText">199</p>
-
-        <button class="IncrementPageButton" id="pageInc">
-            <img src="images/arrow-right-solid.svg" class="PageImage" id="pageIncImg">
-        </button>
-
-        <button class="EndPageButton" id="pageEnd">
-            <img src="images/double-right-solid.svg" class="PageImage" id="pageEndImg">
-        </button>
-    </div>
+    
 
     <button class="ToggleVisualMode" id="ToggleVisualMode">
         <img src="images/lightbulb-solid.svg" alt="" class="ToggleVisualMode_Icon" id="ToggleVisualModeIcon">
@@ -72,9 +81,8 @@
         <button class="WordCopyButton" id="WordCopyButton">Copy</button>
         <button class="DefinitionButton" id="WordDefineButton">Define</button>
     </div>
-
-    <div class="Words" id="WordsDiv">
-    </div>
+-->
+    
 
     <!-- Load Scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
